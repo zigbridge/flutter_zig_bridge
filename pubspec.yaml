@@ -3,7 +3,7 @@ description: >-
   A Flutter package bridging Dart and Zig via FFI. Automatically compiles Zig
   code during the Flutter build using native_toolchain_zig.
 version: 0.1.0
-repository: https://github.com/brucearctor/flutter_zig_bridge
+repository: https://github.com/zigbridge/flutter_zig_bridge
 
 environment:
   sdk: ^3.8.0
