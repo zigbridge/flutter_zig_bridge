@@ -236,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                 // ── Footer ──
                 Center(
                   child: Text(
-                    'Dart ↔ Zig via dart:ffi + native_toolchain_zig',
+                    'Dart ↔ Zig via dart:ffi + build hooks',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: colorScheme.onSurfaceVariant.withValues(
                             alpha: 0.6,

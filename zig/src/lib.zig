@@ -103,6 +103,11 @@ test "add" {
     try std.testing.expectEqual(@as(i32, -4), add(-2, -2));
 }
 
+test "add i32 boundaries" {
+    try std.testing.expectEqual(@as(i32, 2147483647), add(2147483646, 1));
+    try std.testing.expectEqual(@as(i32, -2147483648), add(-2147483647, -1));
+}
+
 test "multiply" {
     try std.testing.expectEqual(@as(i32, 6), multiply(2, 3));
     try std.testing.expectEqual(@as(i32, 0), multiply(0, 42));
@@ -116,3 +121,53 @@ test "fibonacci" {
     try std.testing.expectEqual(@as(i64, 6765), fibonacci(20));
     try std.testing.expectEqual(@as(i64, -1), fibonacci(-1));
 }
+
+test "fibonacci large" {
+    try std.testing.expectEqual(@as(i64, 12586269025), fibonacci(50));
+    // fib(92) is the largest that fits in i64
+    try std.testing.expectEqual(@as(i64, 7540113804746346429), fibonacci(92));
+}
+
+test "reverse_string ASCII" {
+    const input = "hello";
+    const result = reverse_string(input.ptr, input.len) orelse unreachable;
+    defer free_string(result);
+    const slice = std.mem.span(result);
+    try std.testing.expectEqualStrings("olleh", slice);
+}
+
+test "reverse_string multi-byte UTF-8" {
+    const input = "café";
+    const result = reverse_string(input.ptr, input.len) orelse unreachable;
+    defer free_string(result);
+    const slice = std.mem.span(result);
+    try std.testing.expectEqualStrings("éfac", slice);
+}
+
+test "reverse_string CJK" {
+    const input = "\u{4f60}\u{597d}"; // 你好
+    const result = reverse_string(input.ptr, input.len) orelse unreachable;
+    defer free_string(result);
+    const slice = std.mem.span(result);
+    try std.testing.expectEqualStrings("\u{597d}\u{4f60}", slice); // 好你
+}
+
+test "reverse_string empty" {
+    const input = "";
+    const result = reverse_string(input.ptr, 0);
+    if (result) |r| {
+        defer free_string(r);
+        const slice = std.mem.span(r);
+        try std.testing.expectEqualStrings("", slice);
+    }
+    // null is also acceptable for empty input
+}
+
+test "reverse_string single char" {
+    const input = "x";
+    const result = reverse_string(input.ptr, input.len) orelse unreachable;
+    defer free_string(result);
+    const slice = std.mem.span(result);
+    try std.testing.expectEqualStrings("x", slice);
+}
+
