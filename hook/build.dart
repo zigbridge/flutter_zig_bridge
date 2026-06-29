@@ -3,6 +3,8 @@
 /// This replaces the `native_toolchain_zig` dependency with an inline
 /// implementation, avoiding the `meta ^1.18` version conflict that blocks
 /// publishing to pub.dev.
+library;
+
 import 'dart:io';
 
 import 'package:code_assets/code_assets.dart';
