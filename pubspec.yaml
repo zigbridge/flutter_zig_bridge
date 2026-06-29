@@ -1,9 +1,14 @@
 name: flutter_zig_bridge
 description: >-
   A Flutter package bridging Dart and Zig via FFI. Automatically compiles Zig
-  code during the Flutter build using native_toolchain_zig.
+  code during the Flutter build using Dart build hooks.
 version: 0.1.0
 repository: https://github.com/zigbridge/flutter_zig_bridge
+topics:
+  - zig
+  - ffi
+  - interop
+  - native-assets
 
 environment:
   sdk: ^3.8.0
@@ -13,16 +18,14 @@ dependencies:
   ffi: ^2.2.0
   flutter:
     sdk: flutter
+  # Build hook dependencies (used by hook/build.dart)
+  code_assets: ^1.0.0
   hooks: ^1.0.1
-  native_toolchain_zig: ^0.1.1
+  logging: ^1.3.0
+  path: ^1.9.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
 
-# Override required because flutter_test from SDK pins meta 1.17.0
-# while native_toolchain_zig requires meta ^1.18.1.
-# Safe to override — meta is just annotations with no runtime API changes.
-dependency_overrides:
-  meta: ^1.18.1
