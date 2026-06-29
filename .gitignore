@@ -1,0 +1,27 @@
+# Dart / Flutter
+.dart_tool/
+.packages
+build/
+pubspec.lock
+
+# Zig
+zig/zig-cache/
+zig/zig-out/
+zig/.zig-cache/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+
+# Native build artifacts
+*.dylib
+*.so
+*.dll
+*.o
+*.a

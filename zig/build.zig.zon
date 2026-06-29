@@ -1,0 +1,11 @@
+.{
+    .name = .flutter_zig_bridge,
+    .version = "0.1.0",
+    .minimum_zig_version = "0.15.0",
+    .fingerprint = 0x44c48af3e5948a90,
+    .paths = .{
+        "src",
+        "build.zig",
+        "build.zig.zon",
+    },
+}
