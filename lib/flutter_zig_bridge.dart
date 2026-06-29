@@ -1,7 +1,7 @@
 /// Flutter Zig Bridge — call Zig from Dart via FFI.
 ///
 /// Provides a high-level Dart API over a Zig native library compiled
-/// automatically during the Flutter build via `native_toolchain_zig`.
+/// automatically during the Flutter build via Dart build hooks.
 ///
 /// ```dart
 /// import 'package:flutter_zig_bridge/flutter_zig_bridge.dart';
