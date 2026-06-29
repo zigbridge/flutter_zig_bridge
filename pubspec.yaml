@@ -2,7 +2,7 @@ name: flutter_zig_bridge
 description: >-
   A Flutter package bridging Dart and Zig via FFI. Automatically compiles Zig
   code during the Flutter build using Dart build hooks.
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/zigbridge/flutter_zig_bridge
 topics:
   - zig
